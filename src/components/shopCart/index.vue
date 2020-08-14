@@ -1,6 +1,7 @@
 <template>
-  <div style="height: 17rem">
+  <div>
     <p class="shopTitle">我的购物车</p>
+    <div style="margin-bottom: 100px;">
     <div class="content" v-for="(item,index) in shopList" :key="index">
           <van-card
             :num="item.number"
@@ -13,6 +14,7 @@
               <van-button size="mini" style="background: #CC6600;color: #ffffff;padding: 6px 6px; border-radius: 8px;border: none">删除</van-button>
             </template>
         </van-card>
+    </div>
     </div>
     <van-submit-bar :price="3050" button-text="去结算"  @submit="onSubmit">
         <van-checkbox>全选</van-checkbox>
@@ -44,7 +46,6 @@
       },
       onSubmit() {
         this.$router.push('/orderDetails')
-        console.log('跳转成功')
       }
     },
     created() {
@@ -72,6 +73,6 @@
 }
   .content{
     padding: 0px 10px;
-    margin-top: 10px;
+    margin: 5px 0px 5px;
   }
 </style>

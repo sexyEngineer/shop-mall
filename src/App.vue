@@ -31,5 +31,6 @@ export default {
   }
 #app{
   background:#BBFFFF;
+  height: auto;
 }
 </style>

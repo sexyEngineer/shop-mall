@@ -19,7 +19,7 @@
       <van-grid :border="false" :column-num="2">
         <van-grid-item v-for="(item,index) in homeProducts_zg" :key="index">
           <van-image :src="item.new_pic_url"/>
-          <span style="position: absolute;top: 10px;left: 15px;color: #CC6600">
+          <span style="position: absolute;top: 20px;left: 15px;color: #CC6600">
             <p>{{item.name}}</p>
             <p>{{item.floor_price}}起</p>
           </span>

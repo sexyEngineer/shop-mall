@@ -13,7 +13,7 @@
         <img :src="indexactionContent.banner_url" style="height: 3rem;width: 7rem"/>
       </div>
       <p style="text-align: center">——{{indexactionContent.name}}分类——</p>
-      <van-grid style="padding-left: 8px" :border="false">
+      <van-grid :column-num="2" :gutter="10" :border="false">
         <van-grid-item v-for="(item,index) in indexactionContentList" :key="index">
           <img :src="item.wap_banner_url" style="width: 2rem"/>
           <span>{{item.name}}</span>

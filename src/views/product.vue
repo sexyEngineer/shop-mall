@@ -18,9 +18,9 @@
           <p style="text-align: center;font-size: 14px;font-weight: bold;">{{productMessageName}}</p>
           <p style="text-align: center;font-size: 14px;font-weight: bold;color: #CC6600">￥{{productMessageRetail_price}}</p>
           <img :src="primary_pic_urls" style="width: 3rem;margin-left: 20px"/>
-          <van-stepper v-model="value" theme="round" button-size="22" disable-input style="margin: 10px 20px 0px"/>
+          <van-stepper v-model="number" theme="round" button-size="22" disable-input style="margin: 10px 20px 0px"/>
           <van-goods-action>
-            <van-goods-action-button type="warning" text="加入购物车" />
+            <van-goods-action-button type="warning" text="加入购物车" @click="addCart"/>
             <van-goods-action-button type="danger" text="立即购买" />
           </van-goods-action>
         </div>
@@ -51,15 +51,16 @@
     <van-goods-action>
       <van-goods-action-icon icon="chat-o" text="客服" color="#07c160" />
       <van-goods-action-icon icon="cart-o" text="购物车" />
-      <van-goods-action-icon icon="star" text="收藏" />
-      <van-goods-action-button type="warning" text="加入购物车" />
+      <van-goods-action-icon icon="star" text="收藏" @click="cancelCollect"  v-if="collect"/>
+      <van-goods-action-icon icon="star-o" text="收藏" @click="addCollect" v-else/>
+      <van-goods-action-button type="warning" text="加入购物车" @click="addCart"/>
       <van-goods-action-button type="danger" text="立即购买" />
     </van-goods-action>
   </div>
 </template>
 
 <script>
-  import {detailaction} from '../api/api'
+  import {detailaction , addcollect , addCart} from '../api/api'
   export default {
     data(){
       return{
@@ -70,12 +71,15 @@
         primary_pic_urls: '',
         goods_desc: '',
         productList: '',
+        number: 1,
         issue: '',
         show: false,
+        collect: false,
         value: '',
         params:{
           id: '',
           openId: 'oQmbb4sNZdxaUQZ0sfYgvtOP2S7c',
+          goodsId: '',
         }
       }
     },
@@ -95,6 +99,41 @@
           this.goods_desc = res.data.info.goods_desc;
           this.issue = res.data.issue;
           this.productList = res.data.productList;
+        })
+      },
+      //商品收藏
+      addCollect(){
+        this.params.goodsId = this.params.id;
+        this.params.openId = '"oQmbb4sNZdxaUQZ0sfYgvtOP2S7c"';
+        addcollect(this.params).then(res => {
+          if (res.data.code == 0) {
+            this.$toast('收藏成功')
+            this.collect = true;
+          }else{
+            this.$toast('收藏失败，请重试')
+          }
+        })
+      },
+      //取消收藏
+      cancelCollect(){
+        this.params.goodsId = this.params.id;
+        this.params.openId = '"oQmbb4sNZdxaUQZ0sfYgvtOP2S7c"';
+        addcollect(this.params).then(res => {
+          if (res.data.code == 0) {
+            this.$toast('取消收藏成功')
+            this.collect = false;
+          }else{
+            this.$toast('取消收藏失败，请重试')
+          }
+        })
+      },
+      //加入购物车
+      addCart(){
+        this.params.goodsId = this.params.id;
+        this.params.openId = '"oQmbb4sNZdxaUQZ0sfYgvtOP2S7c"';
+        this.params.number = this.number;
+        addCart(this.params).then(res => {
+
         })
       },
       //查看商品

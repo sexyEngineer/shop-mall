@@ -70,7 +70,7 @@
           </span>
         </van-grid-item>
         <van-grid-item>
-          <span>
+          <span @click="getcommodityDetails(item)">
             <span style="font-size: 16px;color: #758a99">查看更多</span>
             <img src="../../assets/rightbig.png" style="width: 14px"/>
           </span>

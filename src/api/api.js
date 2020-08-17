@@ -47,6 +47,22 @@ export  function detailaction(query){
     params: query
   })
 }
+//商品收藏
+export  function addcollect(query){
+  return request({
+    url: '/heyushuo/heyushuo/collect/addcollect',
+    methods: 'post',
+    params: query
+  })
+}
+//加入购物车
+export  function addCart(query){
+  return request({
+    url: '/heyushuo/heyushuo/cart/addCart',
+    methods: 'post',
+    params: query
+  })
+}
 //获取商品类型分类导航
 export  function categoryNav(query){
   return request({
@@ -84,6 +100,22 @@ export  function saveAction(query){
   return request({
     url: '/heyushuo/heyushuo/address/saveAction',
     methods: 'post',
+    params: query
+  })
+}
+//查询收货地址
+export  function saveAction(query){
+  return request({
+    url: '/heyushuo/heyushuo/address/detailAction',
+    methods: 'post',
+    params: query
+  })
+}
+//查看收藏夹
+export  function listAction(query){
+  return request({
+    url: '/heyushuo/heyushuo/collect/listAction',
+    methods: 'get',
     params: query
   })
 }

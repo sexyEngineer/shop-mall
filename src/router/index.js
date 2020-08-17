@@ -8,6 +8,8 @@ import  myCenter from '../components/myCenter/index'
 import product from "../views/product";
 import orderDetails from '../views/orderDetails'
 import commodityDetails from '../views/commodityDetails'
+import collect from '../views/Collect'
+import address from '../views/Address'
 
 Vue.use(Router)
 
@@ -52,7 +54,17 @@ export default new Router({
       path: '/commodityDetails',
       name: 'commodityDetails',
       component: commodityDetails
-    }
+    },
+    {
+      path: '/collect',
+      name: 'collect',
+      component: collect
+    },
+    {
+      path: '/address',
+      name: 'address',
+      component: address
+    },
   ]
 })
 const originalPush = Router.prototype.push

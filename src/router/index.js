@@ -10,6 +10,7 @@ import orderDetails from '../views/orderDetails'
 import commodityDetails from '../views/commodityDetails'
 import collect from '../views/Collect'
 import address from '../views/Address'
+import Feedback from '../views/Feedback'
 
 Vue.use(Router)
 
@@ -65,6 +66,11 @@ export default new Router({
       name: 'address',
       component: address
     },
+    {
+      path: '/Feedback',
+      name: 'Feedback',
+      component: Feedback
+    }
   ]
 })
 const originalPush = Router.prototype.push

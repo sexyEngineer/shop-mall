@@ -29,7 +29,7 @@
 </template>
 
 <script>
-  import {getListAction} from '../api/api'
+  import {getListAction , saveAction} from '../api/api'
   export default {
     data(){
       return{
@@ -60,10 +60,19 @@
       },
       close(){
         this.show = false;
+        this.getListActions();
       },
       //保存编辑
       saveAddress(){
         this.show = false;
+        this.params.id = this.editValue.id;
+        this.params.address = this.editValue.address;
+        this.params.addressId = this.editValue.address_detail;
+        this.params.userName = this.editValue.name;
+        this.params.telNumber = this.editValue.mobile;
+        saveAction(this.params).then(res => {
+        })
+        this.getListActions();
       },
     }
   }

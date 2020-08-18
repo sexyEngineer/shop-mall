@@ -14,7 +14,7 @@
       </div>
       <p style="text-align: center">——{{indexactionContent.name}}分类——</p>
       <van-grid :column-num="2" :gutter="10" :border="false">
-        <van-grid-item v-for="(item,index) in indexactionContentList" :key="index">
+        <van-grid-item v-for="(item,index) in indexactionContentList" :key="index" @click="getDetails(item)">
           <img :src="item.wap_banner_url" style="width: 2rem"/>
           <span>{{item.name}}</span>
         </van-grid-item>
@@ -51,6 +51,10 @@
         indexaction().then(res => {
           this.indexactionList = res.data.categoryList
         })
+      },
+      //点击详情信息
+      getDetails(item){
+        this.$router.push({path: '/product', query: {id: item.id}});
       },
       //选择列表
       choseName(index){

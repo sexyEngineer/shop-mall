@@ -56,7 +56,6 @@
       async getGoodsLists(){
         goodsLists(this.params).then(res => {
           this.goodsLists = res.data.data
-          debugger
         })
       },
       //返回操作

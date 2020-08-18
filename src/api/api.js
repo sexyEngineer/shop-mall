@@ -104,7 +104,7 @@ export  function saveAction(query){
   })
 }
 //查询收货地址
-export  function saveAction(query){
+export  function detailAction(query){
   return request({
     url: '/heyushuo/heyushuo/address/detailAction',
     methods: 'post',

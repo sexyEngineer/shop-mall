@@ -54,7 +54,7 @@
       },
       //点击详情信息
       getDetails(item){
-        this.$router.push({path: '/product', query: {id: item.id}});
+        this.$router.push({path: '/commodityDetails', query: {id: item.id}});
       },
       //选择列表
       choseName(index){

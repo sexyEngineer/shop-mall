@@ -21,7 +21,7 @@
     <van-grid :gutter="3">
       <van-grid-item icon="comment-circle-o" text="联系客服" />
       <van-grid-item icon="question-o" text="帮助中心" />
-      <van-grid-item icon="envelop-o" text="意见反馈" />
+      <van-grid-item icon="envelop-o" text="意见反馈" @click="feedback" />
     </van-grid>
     <foot-nav></foot-nav>
   </div>
@@ -39,6 +39,9 @@
       },
       address(){
         this.$router.push('/address')
+      },
+      feedback(){
+        this.$router.push('/Feedback')
       }
     }
   }

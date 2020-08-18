@@ -11,7 +11,7 @@
         </div>
         <van-grid :column-num="2" :gutter="3" style="margin-top: 10px">
           <van-grid-item v-for="(item,index) in goodsLists" :key="index" @click="goProduct(item)">
-            <img :src="item.list_pic_url" style="width:4rem"/>
+            <img :src="item.banner_url" style="width:4rem"/>
             <p>{{item.name}}</p>
             <p>销量：{{item.sell_volume}}</p>
             <p style="color: #CC6600">￥{{item.retail_price}}</p>
@@ -53,7 +53,7 @@
         this.getGoodsLists();
       },
       //获取商品
-      async getGoodsLists(){
+      getGoodsLists(){
         goodsLists(this.params).then(res => {
           this.goodsLists = res.data.data
         })

@@ -104,7 +104,6 @@
       //商品收藏
       addCollect(){
         this.params.goodsId = this.params.id;
-        this.params.openId = '"oQmbb4sNZdxaUQZ0sfYgvtOP2S7c"';
         addcollect(this.params).then(res => {
           if (res.data.code == 0) {
             this.$toast('收藏成功')
@@ -117,7 +116,6 @@
       //取消收藏
       cancelCollect(){
         this.params.goodsId = this.params.id;
-        this.params.openId = '"oQmbb4sNZdxaUQZ0sfYgvtOP2S7c"';
         addcollect(this.params).then(res => {
           if (res.data.code == 0) {
             this.$toast('取消收藏成功')
@@ -130,7 +128,6 @@
       //加入购物车
       addCart(){
         this.params.goodsId = this.params.id;
-        this.params.openId = '"oQmbb4sNZdxaUQZ0sfYgvtOP2S7c"';
         this.params.number = this.number;
         addCart(this.params).then(res => {
 

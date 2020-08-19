@@ -37,7 +37,13 @@
         show: false,
         editValue: '',
         params: {
-          openId: 'oQmbb4sNZdxaUQZ0sfYgvtOP2S7c'
+          openId: 'oQmbb4sNZdxaUQZ0sfYgvtOP2S7c',
+          checked: true,
+          id: '',
+          address: '',
+          addressId: '',
+          userName: '',
+          telNumber: ''
         },
       }
     },
@@ -71,6 +77,7 @@
         this.params.userName = this.editValue.name;
         this.params.telNumber = this.editValue.mobile;
         saveAction(this.params).then(res => {
+
         })
         this.getListActions();
       },

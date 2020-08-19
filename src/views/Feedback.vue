@@ -3,7 +3,7 @@
     <van-nav-bar title="意见反馈" left-text="返回" @click-left="onClickLeft"/>
     <div>
       <van-field
-        v-model="message"
+        v-model="content"
         rows="4"
         autosize
         label="您的反馈"
@@ -13,7 +13,7 @@
         show-word-limit
       />
       <van-field
-        v-model="tel"
+        v-model="phone"
         rows="1"
         autosize
         label="联系方式"
@@ -30,11 +30,11 @@
   export default {
     data(){
       return{
-        message: '',
-        tel: '',
+        content: '',
+        phone: '',
         params: {
-          message: '',
-          tel: '',
+          content: '',
+          phone: '',
           openId: "oQmbb4sNZdxaUQZ0sfYgvtOP2S7c",
           name: '何玉硕'
         },
@@ -48,21 +48,25 @@
         this.$router.go(-1)
       },
       submit() {
-        if (this.message == '') {
+        if (this.content == '') {
           this.$toast('反馈内容不能为空');
         }
-        else if (this.tel == '') {
+        else if (this.phone == '') {
           this.$toast('联系方式不能为空');
         }
         else{
-          this.params.message = this.message;
-          this.params.tel = this.tel;
+          this.params.content = this.content;
+          this.params.phone = this.phone;
           submitAction(this.params).then(res => {
-
+            if(res.data.data == 'true') {
+              this.$toast('提交成功，感谢您的反馈')
+            }else {
+              this.$toast('提交失败，请重试')
+            }
           })
         }
-        this.message = '';
-        this.tel = '';
+        this.content = '';
+        this.phone = '';
       },
     },
   }

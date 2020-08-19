@@ -105,7 +105,7 @@
       addCollect(){
         this.params.goodsId = this.params.id;
         addcollect(this.params).then(res => {
-          if (res.data.code == 0) {
+          if (res.data.data == 'success') {
             this.$toast('收藏成功')
             this.collect = true;
           }else{
@@ -130,7 +130,11 @@
         this.params.goodsId = this.params.id;
         this.params.number = this.number;
         addCart(this.params).then(res => {
-
+          if(res.data.data == 'success') {
+            this.$toast('加入购物车成功')
+          }else {
+            this.$toast('加入购物车失败，请重试')
+          }
         })
       },
       //查看商品

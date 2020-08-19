@@ -11,6 +11,7 @@ import commodityDetails from '../views/commodityDetails'
 import collect from '../views/Collect'
 import address from '../views/Address'
 import Feedback from '../views/Feedback'
+import productList from '../views/productList'
 
 Vue.use(Router)
 
@@ -70,6 +71,11 @@ export default new Router({
       path: '/Feedback',
       name: 'Feedback',
       component: Feedback
+    },
+    {
+      path: '/productList',
+      name: 'productList',
+      component: productList
     }
   ]
 })

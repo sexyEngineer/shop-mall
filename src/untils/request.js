@@ -1,5 +1,5 @@
 import axios from 'axios'
-import qs from 'qs'
+// import qs from 'qs'
 
 axios.defaults.timeout = 5000; // 请求超时时间
 // axios.defaults.baseURL = 'http://118.25.222.68:5757'
@@ -20,7 +20,7 @@ const service = axios.create({
 service.interceptors.request.use(config => {
     if (config.method === 'post') {
         //如果是post请求则进行序列化处理
-        config.data = qs.stringify(config.data);
+        // config.data = qs.stringify(config.data);
     }
     return config;
 }, error => {  //请求错误处理

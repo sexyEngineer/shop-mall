@@ -7,6 +7,26 @@ export function Homepageproducts(query) {
         params: query
     })
 }
+//按条件搜索商品
+export function helperaction(query) {
+  return request({
+    url: '/heyushuo/heyushuo/search/helperaction',
+    method: 'get',
+    params: query
+  })
+}
+//热门推荐
+export function indexactions(query) {
+  return request({
+    url: '/heyushuo/heyushuo/search/indexaction',
+    method: 'get',
+    params: query
+  })
+}
+//清空搜索历史记录
+export function clearhistoryAction(query) {
+  return request.post('/heyushuo/heyushuo/search/clearhistoryAction', query)
+}
 // 获取热卖信息
 export function BestSellersApi(query) {
   return request({
@@ -49,19 +69,11 @@ export  function detailaction(query){
 }
 //商品收藏
 export  function addcollect(query){
-  return request({
-    url: '/heyushuo/heyushuo/collect/addcollect',
-    method: 'post',
-    params: query
-  })
+  return request.post('/heyushuo/heyushuo/collect/addcollect', query)
 }
 //加入购物车
 export  function addCart(query){
-  return request({
-    url: '/heyushuo/heyushuo/cart/addCart',
-    method: 'post',
-    params: query
-  })
+  return request.post('/heyushuo/heyushuo/cart/addCart', query)
 }
 //删除购物车商品
 /* id: 477 */
@@ -106,11 +118,7 @@ export  function getListAction(query){
 }
 // 保存编辑地址
 export  function saveAction(query){
-  return request({
-    url: '/heyushuo/heyushuo/address/saveAction',
-    method: 'post',
-    params: query
-  })
+  return request.post('/heyushuo/heyushuo/address/saveAction', query)
 }
 //删除收货地址
 /*id: 82*/
@@ -139,10 +147,6 @@ export  function listAction(query){
 }
 //提交反馈
 export  function submitAction(query){
-  return request({
-    url: '/heyushuo/heyushuo/feedback/submitAction',
-    method: 'post',
-    params: query
-  })
+  return request.post('/heyushuo/heyushuo/feedback/submitAction', query)
 }
 

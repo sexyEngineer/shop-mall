@@ -10,14 +10,15 @@
             :thumb="item.list_pic_url"
           >
             <template #footer>
-              <van-button size="mini" style="background: #CC6600;color: #ffffff;padding: 6px 6px; border-radius: 8px;border: none">结算</van-button>
-              <van-button size="mini" style="background: #CC6600;color: #ffffff;padding: 6px 6px; border-radius: 8px;border: none">删除</van-button>
+              <van-button size="mini" @click="jiesuan(item)" style="background: #CC6600;color: #ffffff;padding: 6px 6px; border-radius: 8px;border: none">结算</van-button>
+              <van-button size="mini" @click="deleteShop(item)" style="background: #CC6600;color: #ffffff;padding: 6px 6px; border-radius: 8px;border: none">删除</van-button>
             </template>
         </van-card>
     </div>
     </div>
-    <van-submit-bar :price="3050" button-text="去结算"  @submit="onSubmit">
+    <van-submit-bar button-text="去结算"  @submit="onSubmit">
         <van-checkbox>全选</van-checkbox>
+        <span style="width: 3rem;margin-left: 50px">总计:{{totalPrice}}</span>
     </van-submit-bar>
     <foot-nav></foot-nav>
   </div>
@@ -25,25 +26,52 @@
 
 <script>
   import footNav from "../../../Layout/footNav";
-  import {cartList} from '../../api/api'
+  import {cartList , shopCartDeleteAction} from '../../api/api'
   export default {
     data(){
       return{
         shopList: '',
         params:{
           openId: 'oQmbb4sNZdxaUQZ0sfYgvtOP2S7c',
-        }
+          id: '',
+        },
+        //总价
+        totalPrice: '',
       }
     },
     components:{
       footNav,
     },
+    computed:{
+
+    },
     methods:{
+      //查询购物车
       getCartList() {
         cartList(this.params).then(res => {
           this.shopList = res.data.data
         })
       },
+      //删除商品
+      deleteShop(item) {
+        this.params.id = item.id
+        this.$dialog.confirm({
+          title: '从购物删除商品',
+          // message: '弹窗内容',
+        })
+          .then(() => {
+            this.$toast('商品删除成功')
+            shopCartDeleteAction(this.params);
+            this.getCartList();
+          })
+          .catch(() => {
+            this.$toast('删除操作已取消')
+          });
+      },
+      //点击结算
+      jiesuan(item){
+      },
+      // 去结算
       onSubmit() {
         this.$router.push('/orderDetails')
       }

@@ -83,8 +83,8 @@
 
 <script>
   import {Homepageproducts} from '../../api/api'
-  import topNav from "../../../Layout/topNav";
-  import footNav from "../../../Layout/footNav";
+  import topNav from "../../Layout/topNav";
+  import footNav from "../../Layout/footNav";
   export default {
     data(){
       return{

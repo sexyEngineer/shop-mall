@@ -28,7 +28,7 @@
 </template>
 
 <script>
-  import footNav from "../../../Layout/footNav";
+  import footNav from "../../Layout/footNav";
   export default {
     components:{
       footNav

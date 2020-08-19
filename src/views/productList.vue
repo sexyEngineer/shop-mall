@@ -1,6 +1,12 @@
 <template>
   <div>
     <van-nav-bar title="商品列表" left-text="返回"  @click-left="onClickLeft"/>
+    <van-tabbar v-model="active">
+      <van-tabbar-item @click="sort(active)">综合</van-tabbar-item>
+      <van-tabbar-item @click="sort(active)" v-if="sortJg == true">价格（由高到低）</van-tabbar-item>
+      <van-tabbar-item @click="sort(active)" v-else>价格（由低到高）</van-tabbar-item>
+      <van-tabbar-item @click="sort(active)">分类</van-tabbar-item>
+    </van-tabbar>
     <van-empty image="search" description="描述文字" v-show="productList.length == 0"/>
     <van-grid :column-num="2" :gutter="5">
       <van-grid-item v-for="(item,index) in productList" :key="index" @click="product(item)">
@@ -21,7 +27,14 @@
         params:{
           keyword:'',
           openId: ''
-        }
+        },
+        sorts:{
+          keyword: '',
+          //asc --desc
+          order: ''
+        },
+        sortJg: true,
+        active: 0,
       }
     },
     created() {
@@ -42,11 +55,32 @@
       // 查看详情
       product(item) {
         this.$router.push({path:'/product',query:{id:item.id}})
+      },
+      // 对列表进行排序
+      sort(active) {
+        if (active == 1 && this.sortJg == true){
+          this.sorts.order = 'desc';
+          this.sorts.keyword = this.params.keyword;
+          this.sortJg = false;
+        }else if (active ==1 && this.sortJg == false){
+          this.sorts.order = 'asc';
+          this.sorts.keyword = this.params.keyword;
+          this.sortJg = true;
+        }
+        helperaction(this.sorts).then(res => {
+          this.productList = res.data.keywords;
+        })
       }
     }
   }
 </script>
 
 <style scoped>
-
+.van-tabbar--fixed{
+  position:relative;
+}
+.van-tabbar{
+  height: 40px;
+  background: #FFFAF0;
+}
 </style>

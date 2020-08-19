@@ -8,6 +8,10 @@ import  myCenter from '../components/myCenter/index'
 import product from "../views/product";
 import orderDetails from '../views/orderDetails'
 import commodityDetails from '../views/commodityDetails'
+import collect from '../views/Collect'
+import address from '../views/Address'
+import Feedback from '../views/Feedback'
+import productList from '../views/productList'
 
 Vue.use(Router)
 
@@ -52,6 +56,26 @@ export default new Router({
       path: '/commodityDetails',
       name: 'commodityDetails',
       component: commodityDetails
+    },
+    {
+      path: '/collect',
+      name: 'collect',
+      component: collect
+    },
+    {
+      path: '/address',
+      name: 'address',
+      component: address
+    },
+    {
+      path: '/Feedback',
+      name: 'Feedback',
+      component: Feedback
+    },
+    {
+      path: '/productList',
+      name: 'productList',
+      component: productList
     }
   ]
 })

@@ -19,7 +19,7 @@ const px2remLoader = {
     remUnit: 75
   }
 }
-const loaders = [cssLoader , px2remLoader]
+const loaders = [px2remLoader]
 rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
   if (err) throw err
   webpack(webpackConfig, (err, stats) => {

@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import footNav from "../../../Layout/footNav";
+  import footNav from "../../Layout/footNav";
   import {BestSellersApi} from '../../api/api'
   export default {
     data(){

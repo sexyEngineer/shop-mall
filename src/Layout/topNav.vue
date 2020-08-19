@@ -34,7 +34,7 @@
 </template>
 
 <script>
-  import {helperaction, indexactions, clearhistoryAction, shopCartDeleteAction} from '../src/api/api'
+  import {helperaction, indexactions, clearhistoryAction, shopCartDeleteAction} from '../api/api'
     export default {
         data() {
             return {

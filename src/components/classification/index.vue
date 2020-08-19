@@ -25,8 +25,8 @@
 </template>
 
 <script>
-  import footNav from "../../../Layout/footNav";
-  import topNav from "../../../Layout/topNav";
+  import footNav from "../../Layout/footNav";
+  import topNav from "../../Layout/topNav";
   import {indexaction , currentaction} from '../../api/api'
   export default {
     data(){

@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import footNav from "../../../Layout/footNav";
+  import footNav from "../../Layout/footNav";
   import {cartList , shopCartDeleteAction} from '../../api/api'
   export default {
     data(){

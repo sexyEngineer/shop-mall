@@ -1,4 +1,4 @@
-# myself-news
+# vue-shop
 
 > A Vue.js project
 

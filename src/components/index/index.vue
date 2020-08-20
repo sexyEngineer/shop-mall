@@ -29,7 +29,6 @@
     <div>
     <div class="newsShop">
       <p style="color: #758a99;font-size: 14px;">新品首发</p>
-      <van-button color="linear-gradient(to right, #ff6034, #ee0a24)" style="height: 30px;margin-top: 5px">查看全部</van-button>
     </div>
       <div class="list">
         <ul style="background: #ffffff;">
@@ -45,7 +44,6 @@
     <div>
       <div class="newsShop">
         <p style="color: #758a99;font-size: 14px;">人气推荐·好物精选</p>
-        <van-button color="linear-gradient(to right, #ff6034, #ee0a24)" style="height: 30px;margin-top: 5px">查看全部</van-button>
       </div>
       <div class="list">
         <ul style="background: #ffffff">
@@ -77,14 +75,15 @@
         </van-grid-item>
       </van-grid>
     </div>
-    <foot-nav></foot-nav>
+    <div style="position: fixed;top: 6rem;right: 12px">
+      <van-icon name="back-top" color="#FF4500" size="30" v-if="btnFlag"  @click="backTop()"/>
+    </div>
   </div>
 </template>
 
 <script>
   import {Homepageproducts} from '../../api/api'
   import topNav from "../../Layout/topNav";
-  import footNav from "../../Layout/footNav";
   export default {
     data(){
       return{
@@ -94,14 +93,11 @@
         homeProducts_goods: '',
         homeProducts_hotGoods: '',
         homeProducts_newCategoryList: '',
+        btnFlag:false,
       }
     },
     components:{
       topNav,
-      footNav,
-    },
-    mounted() {
-      this.getceshi();
     },
     methods: {
       //获取商品信息
@@ -128,8 +124,38 @@
         // 获取商品分类
         getcommodityDetails(item){
           this.$router.push({path:'/commodityDetails',query:{id:item.id}})
+        },
+      // 点击图片回到顶部方法，加计时器是为了过渡顺滑
+      backTop() {
+        let that = this
+        let timer = setInterval(() => {
+          let ispeed = Math.floor(-that.scrollTop / 5)
+          document.documentElement.scrollTop = document.body.scrollTop = that.scrollTop + ispeed
+          if(that.scrollTop === 0) {
+            clearInterval(timer)
+          }
+        }, 16)
+      },
+
+      // 为了计算距离顶部的高度，当高度大于200显示回顶部图标，小于200则隐藏
+      scrollToTop() {
+        let that = this
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+        that.scrollTop = scrollTop
+        if(that.scrollTop >600) {
+          that.btnFlag = true
+        } else {
+          that.btnFlag = false
         }
       }
+      },
+    mounted() {
+      this.getceshi();
+      window.addEventListener('scroll', this.scrollToTop)
+    },
+    destroyed() {
+      window.removeEventListener('scroll', this.scrollToTop)
+    },
   }
 </script>
 
@@ -160,7 +186,7 @@
     padding: 15px 0px;
   }
   .newsShop{
-    height: 2rem;
+    height: 1rem;
     text-align: center;
     padding-top: 20px;
   }

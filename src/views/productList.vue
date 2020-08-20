@@ -7,7 +7,7 @@
       <van-tabbar-item @click="sort(active)" v-else>价格（由低到高）</van-tabbar-item>
       <van-tabbar-item @click="sort(active)">分类</van-tabbar-item>
     </van-tabbar>
-    <van-empty image="search" description="描述文字" v-show="productList.length == 0"/>
+    <van-empty image="search" description="暂未搜索到相关商品" v-show="productList.length == 0"/>
     <van-grid :column-num="2" :gutter="5">
       <van-grid-item v-for="(item,index) in productList" :key="index" @click="product(item)">
         <img :src="item.list_pic_url" style="width: 4rem"/>

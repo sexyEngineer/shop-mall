@@ -47,6 +47,9 @@
         <span style="color: #CC6600">￥{{item.retail_price}}</span>
       </van-grid-item>
     </van-grid>
+    <div style="position: fixed;top: 6rem;right: 12px">
+      <van-icon name="back-top" color="#FF4500" size="30" v-if="btnFlag"  @click="backTop()"/>
+    </div>
     <div style="margin-bottom: 60px"></div>
     <van-goods-action>
       <van-goods-action-icon icon="chat-o" text="客服" color="#07c160" />
@@ -80,7 +83,8 @@
           id: '',
           openId: 'oQmbb4sNZdxaUQZ0sfYgvtOP2S7c',
           goodsId: '',
-        }
+        },
+        btnFlag:false,
       }
     },
     created(){
@@ -140,12 +144,43 @@
       //查看商品
       lookProducts(item){
         this.$router.push({path: '/product', query: {id: item.id}});
+        this.backTop();
       },
       //返回操作
       onClickLeft(){
         this.$router.back(-1)
+      },
+      // 点击图片回到顶部方法，加计时器是为了过渡顺滑
+      backTop() {
+        let that = this
+        let timer = setInterval(() => {
+          let ispeed = Math.floor(-that.scrollTop / 5)
+          document.documentElement.scrollTop = document.body.scrollTop = that.scrollTop + ispeed
+          if(that.scrollTop === 0) {
+            clearInterval(timer)
+          }
+        }, 16)
+      },
+
+      // 为了计算距离顶部的高度，当高度大于200显示回顶部图标，小于200则隐藏
+      scrollToTop() {
+        let that = this
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+        that.scrollTop = scrollTop
+        if(that.scrollTop >200) {
+          that.btnFlag = true
+        } else {
+          that.btnFlag = false
+        }
       }
-    }
+    },
+    mounted() {
+      window.addEventListener('scroll', this.scrollToTop)
+    },
+    destroyed() {
+      window.removeEventListener('scroll', this.scrollToTop)
+    },
+
   }
 </script>
 

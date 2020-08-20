@@ -23,15 +23,12 @@
       <van-grid-item icon="question-o" text="帮助中心" />
       <van-grid-item icon="envelop-o" text="意见反馈" @click="feedback" />
     </van-grid>
-    <foot-nav></foot-nav>
   </div>
 </template>
 
 <script>
-  import footNav from "../../Layout/footNav";
   export default {
     components:{
-      footNav
     },
     methods:{
       lookCollect(){

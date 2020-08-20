@@ -84,6 +84,10 @@ export  function shopCartDeleteAction(query){
     params: query
   })
 }
+//购物车结算商品
+export  function cartSubmitAction(query){
+  return request.post('/heyushuo/heyushuo/order/submitAction', query)
+}
 //获取商品类型分类导航
 export  function categoryNav(query){
   return request({

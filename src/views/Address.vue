@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-nav-bar title="标题" left-text="返回"left-arrow @click-left="onClickLeft"/>
+    <van-nav-bar title="收货地址" left-text="返回"left-arrow @click-left="onClickLeft"/>
     <div>
       <div v-for="(item,index) in getListAction" :key="index" class="box">
         <div style="float: left;width: 60px;text-align: center">
@@ -22,6 +22,11 @@
         <van-field v-model="editValue.name" label="姓名" placeholder="请输入用户名" />
         <van-field v-model="editValue.mobile" label="联系方式" placeholder="请输入用户名" />
         <van-field v-model="editValue.address" label="地址" placeholder="请输入用户名" />
+        <van-cell center title="是否为默认地址">
+          <template #right-icon>
+            <van-switch v-model="checked" size="24" />
+          </template>
+        </van-cell>
       </van-cell-group>
       <van-button type="danger" @click="saveAddress" :round="true" style="position: fixed;bottom: 0px;width: 9rem;margin: 0px 0.5rem">保存编辑</van-button>
     </van-popup>
@@ -36,9 +41,9 @@
         getListAction: '',
         show: false,
         editValue: '',
+        checked: 0,
         params: {
           openId: 'oQmbb4sNZdxaUQZ0sfYgvtOP2S7c',
-          checked: true,
           id: '',
           address: '',
           addressId: '',
@@ -73,13 +78,18 @@
         this.show = false;
         this.params.id = this.editValue.id;
         this.params.address = this.editValue.address;
-        this.params.addressId = this.editValue.address_detail;
+        this.params.addressId = this.editValue.id;
         this.params.userName = this.editValue.name;
         this.params.telNumber = this.editValue.mobile;
-        saveAction(this.params).then(res => {
-
-        })
+        this.params.detailadress = this.editValue.address_detail;
+        if (this.checked == 0) {
+          this.params.checked = false;
+        }else if(this.checked == 1) {
+          this.params.checked = true;
+        }
+        saveAction(this.params);
         this.getListActions();
+        this.checked = 0;
       },
     }
   }

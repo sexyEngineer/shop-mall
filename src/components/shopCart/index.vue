@@ -36,7 +36,7 @@
 
 <script>
   import footNav from "../../Layout/footNav";
-  import {cartList , shopCartDeleteAction} from '../../api/api'
+  import {cartList , shopCartDeleteAction,cartSubmitAction} from '../../api/api'
   export default {
     data(){
       return{
@@ -44,6 +44,11 @@
         params:{
           openId: 'oQmbb4sNZdxaUQZ0sfYgvtOP2S7c',
           id: '',
+        },
+        cartParams:{
+          allPrise: '',
+          goodsId: '',
+          openId: "oQmbb4sNZdxaUQZ0sfYgvtOP2S7c"
         },
         result: [],
         //总价
@@ -90,17 +95,21 @@
             this.$toast('删除操作已取消')
           });
       },
-      //点击结算
-      jiesuan(item){
-
-      },
       // 去结算
       onSubmit() {
-        this.$router.push('/orderDetails')
+        this.cartParams.allPrise = this.totalPrice;
+        cartSubmitAction(this.cartParams).then(res => {
+          if (res.data.data == true) {
+            this.$router.push({path:'/orderDetails'})
+          }else{
+             this.$toast('购物车信息有误')
+          }
+        })
       },
       //选中商品
       toggle(index,item) {
         this.$refs.checkboxes[index].toggle();
+        this.cartParams.goodsId = this.cartParams.goodsId.concat(item.goods_id + ',');
       },
       //全选商品
       quanxuan() {

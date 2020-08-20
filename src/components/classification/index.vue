@@ -20,12 +20,10 @@
         </van-grid-item>
       </van-grid>
     </div>
-    <foot-nav></foot-nav>
   </div>
 </template>
 
 <script>
-  import footNav from "../../Layout/footNav";
   import topNav from "../../Layout/topNav";
   import {indexaction , currentaction} from '../../api/api'
   export default {
@@ -42,7 +40,6 @@
       }
     },
     components:{
-      footNav,
       topNav
     },
     methods:{

@@ -8,12 +8,10 @@
         <span style="color: #CC6600">￥{{item.price_info}}起</span>
       </van-grid-item>
     </van-grid>
-    <foot-nav></foot-nav>
   </div>
 </template>
 
 <script>
-  import footNav from "../../Layout/footNav";
   import {BestSellersApi} from '../../api/api'
   export default {
     data(){
@@ -24,9 +22,6 @@
           count: 5,
         }
       }
-    },
-    components:{
-      footNav,
     },
     methods:{
       //获取商品信息

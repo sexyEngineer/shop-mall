@@ -1,10 +1,12 @@
 <template>
   <div id="app">
     <router-view/>
+    <footNav></footNav>
   </div>
 </template>
 
 <script>
+  import footNav from "./Layout/footNav";
 export default {
   name: 'App',
   // created() {
@@ -21,6 +23,9 @@ export default {
   //     watermark: { timestamp: 1535513485, appid: "wx601ce71bde7b9add" }
   //   };
   // }
+  components: {
+    footNav,
+  }
 }
 </script>
 

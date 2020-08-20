@@ -30,12 +30,10 @@
         </van-submit-bar>
       </van-checkbox-group>
     </div>
-    <foot-nav></foot-nav>
   </div>
 </template>
 
 <script>
-  import footNav from "../../Layout/footNav";
   import {cartList , shopCartDeleteAction,cartSubmitAction} from '../../api/api'
   export default {
     data(){
@@ -58,7 +56,6 @@
       }
     },
     components:{
-      footNav,
     },
     computed:{
       totalPrice: function () {

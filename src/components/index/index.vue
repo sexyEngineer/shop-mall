@@ -78,14 +78,12 @@
     <div style="position: fixed;top: 6rem;right: 12px">
       <van-icon name="back-top" color="#FF4500" size="30" v-if="btnFlag"  @click="backTop()"/>
     </div>
-    <foot-nav></foot-nav>
   </div>
 </template>
 
 <script>
   import {Homepageproducts} from '../../api/api'
   import topNav from "../../Layout/topNav";
-  import footNav from "../../Layout/footNav";
   export default {
     data(){
       return{
@@ -100,7 +98,6 @@
     },
     components:{
       topNav,
-      footNav,
     },
     methods: {
       //获取商品信息

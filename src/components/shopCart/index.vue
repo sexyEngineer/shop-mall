@@ -12,9 +12,7 @@
                 @click="toggle(index,item)"
               >
                 <template #footer>
-    <!--              <van-button size="mini" @click="jiesuan(item)" style="background: #CC6600;color: #ffffff;padding: 6px 6px; border-radius: 8px;border: none"></van-button>-->
                   <van-checkbox :name="item" ref="checkboxes" checked-color="#0066cc" style="position: absolute;left: 5px;top: 45px"/>
-    <!--              <van-button size="mini" @click="deleteShop(item)" style="background: #CC6600;color: #ffffff;padding: 6px 6px; border-radius: 8px;border: none">删除</van-button>-->
                 </template>
             </van-card>
         </div>

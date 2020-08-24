@@ -5,6 +5,16 @@ axios.defaults.timeout = 5000; // 请求超时时间
 // axios.defaults.baseURL = 'http://118.25.222.68:5757'
 
 
+// 环境的切换
+// if (process.env.NODE_ENV == 'development') {
+//   axios.defaults.baseURL = '/api';
+// } else if (process.env.NODE_ENV == 'debug') {
+//   axios.defaults.baseURL = '';
+// } else if (process.env.NODE_ENV == 'production') {
+//   axios.defaults.baseURL = 'http://api.123dailu.com/';
+// }
+
+
 /****** request拦截器==>对请求参数做处理 ******/
 // 创建axios实例
 const service = axios.create({
